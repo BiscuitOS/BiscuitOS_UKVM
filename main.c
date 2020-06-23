@@ -28,7 +28,7 @@ static int kvm(uint8_t code[], size_t code_len)
 	/* Open KVM */
 	kvmfd = open("/dev/kvm_BiscuitOS", O_RDWR | O_CLOEXEC);
 	if (kvmfd < 0) {
-		printf("Open /dev/kvm failed: %d\n", errno);
+		printf("Open /dev/kvm_BiscuitOS failed: %d\n", errno);
 		return -1;
 	}
 
