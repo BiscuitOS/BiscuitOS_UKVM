@@ -1,0 +1,21 @@
+# Ignore image file
+
+# Ignore indicate file
+*.o
+*.o.*
+.*.o.cmd
+.*.swp
+.*
+*.ko
+*.mod.c
+*.order
+*.symvers
+BiscuitOS_UKVM-2.6.20
+
+# Execte file
+
+# Ignore dirent
+
+!.gitignore
+# output
+
