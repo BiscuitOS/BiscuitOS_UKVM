@@ -23,7 +23,7 @@
 
 static int kvm(uint8_t code[], size_t code_len)
 {
-	int kvmfd;
+	int kvmfd, vmfd;
 
 	/* Open KVM */
 	kvmfd = open("/dev/kvm_BiscuitOS", O_RDWR | O_CLOEXEC);
@@ -32,7 +32,19 @@ static int kvm(uint8_t code[], size_t code_len)
 		return -1;
 	}
 
+	/* Create KVM */
+	vmfd = ioctl(kvmfd, KVM_CREATE_VCPU, 0);
+	if (vmfd < 0) {
+		printf("IOCTL: KVM_CREATE_VM failed: %d\n", errno);
+		goto out;
+	}
+
+	close(kvmfd);
 	return 0;
+
+out:
+	close(kvmfd);
+	return -1;
 }
 
 int main(void)
